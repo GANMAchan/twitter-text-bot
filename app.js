@@ -1,6 +1,5 @@
 'use strict';
 const Twit = require('twit');
-const cron = require('cron').CronJob;
 
 const twitter = new Twit({
     //環境変数のAPIを読み込み
@@ -28,11 +27,4 @@ function post(){
     })
 };
 
-const cronJob = new cron({
-    cronTime: '00 1 * * *', //毎日1時に実行
-    start: true, // newした後即時実行するかどうか
-    onTick: function(){
-        post();
-    }
-});
 post();
